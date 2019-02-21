@@ -3,6 +3,7 @@ build/
 
 # Gradle internal
 /.gradle/
+/imgui_lwjgl/.gradle/
 
 # IntellJ IDEA specific folders
 /.idea/

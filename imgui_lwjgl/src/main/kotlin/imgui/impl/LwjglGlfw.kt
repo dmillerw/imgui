@@ -6,9 +6,9 @@ import glm_.f
 import glm_.vec2.Vec2
 import glm_.vec2.Vec2d
 import glm_.vec2.Vec2i
-import imgui.*
 import imgui.ImGui.io
 import imgui.ImGui.mouseCursor
+import imgui.*
 import imgui.Key
 import imgui.impl.windowsIme.imeListener
 import kool.cap
@@ -20,7 +20,6 @@ import uno.glfw.*
 import uno.glfw.GlfwWindow.CursorStatus
 import java.nio.ByteBuffer
 import java.nio.FloatBuffer
-import kotlin.collections.set
 
 
 class LwjglGlfw(val window: GlfwWindow, installCallbacks: Boolean = true, val clientApi: GlfwClientApi = GlfwClientApi.OpenGL, val vrTexSize: Vec2i? = null) {

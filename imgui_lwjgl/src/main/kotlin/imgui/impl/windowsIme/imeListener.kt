@@ -27,7 +27,7 @@ object imeListener : WindowProc() {
     lateinit var window: GlfwWindow
 
     fun install(window: GlfwWindow) {
-        this.window = window
+        imeListener.window = window
         if (Platform.get() == Platform.WINDOWS) {
             hwnd = window.hwnd
             glfwProc = GetWindowLongPtr(hwnd.L, GWL_WNDPROC)

@@ -33,11 +33,7 @@ dependencies {
         testImplementation("$kotlin-reflect:$kotlin_version")
     }
 
-    def joglVersion = '2.3.2'
-    implementation "org.jogamp.gluegen:gluegen-rt-main:$joglVersion"
-    implementation "org.jogamp.jogl:jogl-all-main:$joglVersion"
-
-    ["", "-jemalloc","-stb"].each {
+    ["", "-glfw", "-jemalloc", "-opengl"].each {
         String base = "org.lwjgl:lwjgl$it:$lwjgl_version"
         implementation base
         testRuntime "$base:natives-$lwjgl_natives"
@@ -45,6 +41,8 @@ dependencies {
     }
 
     compile files("${System.properties['java.home']}/../lib/tools.jar") // for debug, classes instances
+
+    compile project(':imgui_main')
 }
 
 repositories {
@@ -53,41 +51,9 @@ repositories {
     maven { url 'https://jitpack.io' }
 }
 
-task lightJar(type: Jar) {
-    classifier = 'light'
-    from sourceSets.main.output
-    exclude 'extraFonts'
-    inputs.property("moduleName", moduleName)
-    manifest {
-        attributes('Automatic-Module-Name': moduleName)
-    }
+compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
 }
-
-task sourcesJar(type: Jar, dependsOn: classes) {
-    classifier = 'sources'
-    from sourceSets.main.allSource
+compileTestKotlin {
+    kotlinOptions.jvmTarget = "1.8"
 }
-
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
-
-artifacts {
-    archives lightJar
-    archives sourcesJar
-    archives javadocJar
-}
-
-shadowJar {
-    exclude 'module-info.class'
-    inputs.property("moduleName", moduleName)
-    manifest.attributes('Automatic-Module-Name': moduleName)
-}
-
-jar {
-    inputs.property("moduleName", moduleName)
-    manifest.attributes('Automatic-Module-Name': moduleName)
-}
-
-include ':'

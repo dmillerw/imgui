@@ -22,7 +22,7 @@ import org.lwjgl.glfw.GLFW
 import kool.stak
 
 fun main() {
-	TestMultipleWindowsLwjgl()
+    TestMultipleWindowsLwjgl()
 }
 
 private class TestMultipleWindowsLwjgl {

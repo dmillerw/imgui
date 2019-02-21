@@ -24,9 +24,7 @@ import gln.vertexArray.glBindVertexArray
 import gln.vertexArray.glVertexAttribPointer
 import gln.vertexArray.withVertexArray
 import imgui.DEBUG
-import imgui.DrawData
-import imgui.DrawList
-import imgui.DrawVert
+import imgui.*
 import imgui.ImGui.io
 import kool.*
 import org.lwjgl.opengl.GL
