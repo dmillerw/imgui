@@ -52,7 +52,7 @@ private class HelloWorld_lwjgl {
             init()
         }
 
-        glfw.swapInterval = VSync.ON   // Enable vsync
+        glfw.swapInterval = VSync.OFF   // Enable vsync
 
         // Setup ImGui binding
 //         glslVersion = 330 // set here your desidered glsl version
@@ -67,7 +67,7 @@ private class HelloWorld_lwjgl {
 //        ImGui.styleColorsClassic()
 
         // Setup Platform/Renderer bindings
-        lwjglGlfw = LwjglGlfw(window, true, GlfwClientApi.OpenGL)
+        lwjglGlfw = LwjglGlfw(window, true, GlfwClientApi.OpenGL41)
 
 //        RemoteryGL.rmt_BindOpenGL()
 

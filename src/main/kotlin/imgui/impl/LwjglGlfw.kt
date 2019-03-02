@@ -41,7 +41,7 @@ class LwjglGlfw(val window: GlfwWindow, installCallbacks: Boolean = true, val cl
 
     var vrCursorPos: Vec2? = null
 
-    enum class GlfwClientApi { OpenGL, OpenGL3, OpenGL2, Vulkan }
+    enum class GlfwClientApi { OpenGL, OpenGL3, OpenGL2, OpenGL41, OpenGL43, Vulkan }
 
     val mouseButtonCallback: MouseButtonCallbackT = { button: Int, action: Int, _: Int ->
         if (action == GLFW_PRESS && button in 0..2)
@@ -138,6 +138,8 @@ class LwjglGlfw(val window: GlfwWindow, installCallbacks: Boolean = true, val cl
         }
 
         impl = when(clientApi) {
+            GlfwClientApi.OpenGL43 -> ImplGL43()
+            GlfwClientApi.OpenGL41 -> ImplGL41()
             GlfwClientApi.OpenGL3 -> ImplGL3()
             GlfwClientApi.OpenGL2 -> ImplGL2()
             GlfwClientApi.OpenGL -> {
